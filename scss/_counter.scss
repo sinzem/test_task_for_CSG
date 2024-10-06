@@ -1,0 +1,102 @@
+.counter {
+    position: relative;
+    &__container {
+        width: fit-content;
+        padding: 60px 60px 60px 60px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        border: 2px solid black;
+        border-radius: 72px;
+    }
+    &__item {
+        width: 248px;
+        padding: 26px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        border: 2px solid black;
+        border-radius: 32px;
+        text-align: center;
+        line-height: 1;
+    }
+    &__items:nth-child(1) {
+        border-radius: 32px;
+        background-color: rgb(185, 255, 230);
+    }
+    &__items:nth-child(3) {
+        border-radius: 32px;
+        background-color: rgb(255, 195, 209);
+    }
+    &__items:nth-child(5) {
+        border-radius: 32px;
+        background-color: rgb(253, 195, 255);
+    }
+    &__items:nth-child(7) {
+        border-radius: 32px;
+        background-color: rgb(163, 228, 255);
+    }
+    &__divider {
+        width: 2px;
+        height: auto;
+        background-color: black;
+    }
+    &__title {
+        line-height: 1;
+    }
+    &__description {
+        line-height: 1;
+    }
+}
+
+@media (max-width: 1399px) {
+    .counter {
+        &__container {
+            max-width: 652px;
+        }
+        &__divider {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 991px) {
+
+}
+
+@media (max-width: 767px) {
+    .counter {
+        &__container {
+            width: 370px;
+            justify-content: center;
+        }
+        &__divider {
+            display: block;
+            height: 1px;
+            width: 211px;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .counter {
+        &__container {
+            width: 304px;
+            border-radius: 22px;
+            margin-top: 54px;
+            padding: 28px 0 54px;
+        }
+        &__item {
+            width: 248px;
+        }
+        &__divider {
+            display: block;
+            height: 2px;
+            width: 230px;
+        }
+    }
+}
