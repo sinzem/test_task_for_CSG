@@ -163,7 +163,7 @@
                         <h4 class="description header__central__description">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed architecto dolorum inventore totam adipisci
                         </h4>
-                        <button class="button header__central__button">
+                        <button class="button header__central__button button__call">
                             Start now
                             <img src="./assets/png/Arrow side up.png" alt="up arrow">
                         </button>
@@ -222,7 +222,7 @@
                 <h3 class="subtitle about-us__subtitle">ABOUT US</h3>
                 <h2 class="title about-us__title">Trusted By Worldwide Clients Since <span class="italic">1980</span></h2>
                 <h4 class="description about-us__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. A officia molestiae dolorum tempora ut accusamus cupiditate! Nesciunt tempora reiciendis libero voluptate!</h4>
-                <button class="button about-us__button">
+                <button class="button about-us__button button__call">
                     Get in touch
                     <img src="./assets/png/Arrow side up.png" alt="up arrow">
                 </button>
@@ -294,10 +294,11 @@
                 <h4 class="description services__description">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet sit dolore, odio sequi facere voluptatum!
                 </h4>
-                <button class="button services__button">
+                <div class="button services__button">
                     See all services
                     <img src="./assets/png/Arrow side up.png" alt="up arrow">
-                </button>
+                    <a href="#services"></a>
+                </div>
             </div>
         
             <div class="services__modals">
@@ -405,7 +406,7 @@
                 <h4 class="description choose__description">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit minus tempore ducimus impedit, delectus autem quo reprehenderit. Necessitatibus, inventore voluptatum.
                 </h4>
-                <button class="button choose__button">
+                <button class="button choose__button button__call">
                     Get in touch
                     <img src="./assets/png/Arrow side up.png" alt="up arrow">
                 </button>
@@ -491,40 +492,184 @@
             <h3 class="subtitle portfolio__subtitle">PORTFOLIO</h3>
             <h2 class="title portfolio__title">Awesome Portfolio</h2>
             <div class="portfolio__filters">
-                <button class="button portfolio__button active">All</button>
-                <button class="button portfolio__button">Mobile Apps</button>
-                <button class="button portfolio__button">Cloud</button>
-                <button class="button portfolio__button">Data Analysis</button>
-                <button class="button portfolio__button">Hosting</button>
+                <button data-filter="all" class="button portfolio__button active">All</button>
+                <button data-filter="mobile" class="button portfolio__button">Mobile Apps</button>
+                <button data-filter="cloud" class="button portfolio__button">Cloud</button>
+                <button data-filter="analysis" class="button portfolio__button">Data Analysis</button>
+                <button data-filter="hosting" class="button portfolio__button">Hosting</button>
             </div>
             <div class="portfolio__cases">
-                <div class="portfolio__case portfolio__case_mobile">
+                <div class="portfolio__case portfolio__case_mobile active">
                     <img src="assets/png/shopping-online-gifting.png" alt="woman on internet-shop">
+                    <a href="#portfolio"></a>
                 </div>
-                <div class="portfolio__case portfolio__case_cloud">
+                <div class="portfolio__case portfolio__case_cloud active">
                     <img src="assets/png/shopping-online-gifting.png" alt="woman on internet-shop">
+                    <a href="#portfolio"></a>
                 </div>
-                <div class="portfolio__case portfolio__case_analysis">
+                <div class="portfolio__case portfolio__case_analysis active">
                     <img src="assets/png/shopping-online-gifting.png" alt="woman on internet-shop">
+                    <a href="#portfolio"></a>
                 </div>
-                <div class="portfolio__case portfolio__case_hosting">
+                <div class="portfolio__case portfolio__case_hosting active">
                     <img src="assets/png/shopping-online-gifting.png" alt="woman on internet-shop">
+                    <a href="#portfolio"></a>
                 </div>
-                <div class="portfolio__case portfolio__case_mobile">
+                <div class="portfolio__case portfolio__case_mobile active">
                     <img src="assets/png/shopping-online-gifting.png" alt="woman on internet-shop">
+                    <a href="#portfolio"></a>
                 </div>
-                <div class="portfolio__case portfolio__case_cloud">
+                <div class="portfolio__case portfolio__case_cloud active">
                     <img src="assets/png/shopping-online-gifting.png" alt="woman on internet-shop">
+                    <a href="#portfolio"></a>
                 </div>
-                <div class="portfolio__case portfolio__case_analysis">
+                <div class="portfolio__case portfolio__case_analysis active">
                     <img src="assets/png/shopping-online-gifting.png" alt="woman on internet-shop">
+                    <a href="#portfolio"></a>
                 </div>
-                <div class="portfolio__case portfolio__case_hosting">
+                <div class="portfolio__case portfolio__case_hosting active">
                     <img src="assets/png/shopping-online-gifting.png" alt="woman on internet-shop">
+                    <a href="#portfolio"></a>
+                </div>
+            </div>
+            <button class="next portfolio__next">
+                <img src="./assets/png/Button with icon-4.png" alt="down arrow">
+            </button>
+        </div>
+    </section>
+
+    <section data-to="trust" id="trust" class="trust">
+        <div class="container trust__container">
+            <h2 class="title trust__title">
+                Trusted By Over <span class="italic">500</span> Clients Around The World
+            </h2>
+            <div class="trust__items__wrapper">
+                <div class="trust__items">
+                    <div class="trust__item">
+                        <h3 class="trust__logo">Logo</h3>
+                        <a href="#trust"></a>
+                    </div>
+                    <div class="trust__item">
+                        <h3 class="trust__logo">Logo</h3>
+                        <a href="#trust"></a>
+                    </div>
+                    <div class="trust__item">
+                        <h3 class="trust__logo">Logo</h3>
+                        <a href="#trust"></a>
+                    </div>
+                    <div class="trust__item">
+                        <h3 class="trust__logo">Logo</h3>
+                        <a href="#trust"></a>
+                    </div>
+                    <div class="trust__item">
+                        <h3 class="trust__logo">Logo</h3>
+                        <a href="#trust"></a>
+                    </div>
                 </div>
             </div>
         </div>
-        <button class="next choose__next">
+        <button class="next trust__next">
+            <img src="./assets/png/Button with icon-4.png" alt="down arrow">
+        </button>
+    </section>
+
+    <section data-to="plans" id="plans" class="plans">
+        <div class="container plans__container">
+            <div class="plans__top">
+                <div class="plans__titles">
+                    <h3 class="subtitle plans__subtitle">PRISING PLANS</h3>
+                    <h2 class="title plans__title">Affordable Pricing Plans</h2>
+                    <h4 class="description plans__description">Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit Omnis Id Atque Dignissimos Repellat Quae Ullam.</h4>
+                </div>
+                <a class="button plans__button" href="#plans">
+                    See all plans
+                    <img src="./assets/png/Arrow side up.png" alt="up arrow">
+                </a>
+            </div>
+            <div class="plans__cards">
+                <div class="plans__card">
+                    <div class="plans__card_top">
+                        <h3 class="subtitle plans__card__subtitle">FREE</h3>
+                    </div>
+                    <h4 class="plans__card__price">
+                        <span>$00</span>
+                        /Per Project
+                    </h4>
+                    <div class="plans__card__divider"></div>
+                    <h4 class="description plans__card__features">Features</h4>
+                    <ul class="plans__list">
+                        <li class="description">150 Lorem, Ipsum Dolor.</li>
+                        <li class="description">20 Lorem Ipsum Dolor Sit.</li>
+                        <li class="description">Lorem Ipsum Dolor Sit.</li>
+                        <li class="description">Free Lorem Ipsum Dolor.</li>
+                        <li class="description">Added Lorem Ipsum Dolor.</li>
+                    </ul>
+                    <button class="button plans__card__button">Select plan</button>
+                </div>
+                <div class="plans__card">
+                    <div class="plans__card_top">
+                        <h3 class="subtitle plans__card__subtitle">FREE</h3>
+                    </div>
+                    <h4 class="plans__card__price">
+                        <span>$85</span>
+                        /Per Project
+                    </h4>
+                    <div class="plans__card__divider"></div>
+                    <h4 class="description plans__card__features">Features</h4>
+                    <ul class="plans__list">
+                        <li class="description">150 Lorem, Ipsum Dolor.</li>
+                        <li class="description">20 Lorem Ipsum Dolor Sit.</li>
+                        <li class="description">Lorem Ipsum Dolor Sit.</li>
+                        <li class="description">Free Lorem Ipsum Dolor.</li>
+                        <li class="description">Added Lorem Ipsum Dolor.</li>
+                    </ul>
+                    <button class="button plans__card__button">Select plan</button>
+                </div>
+                <div class="plans__card plans__card_best">
+                    <div class="plans__card_top">
+                        <h3 class="subtitle plans__card__subtitle">FREE</h3>
+                        <button class="button plans__card_top__button">
+                            Best Offer
+                            <img src="./assets/png/Star-1.png" alt="white star">
+                        </button>
+                    </div>
+                    <h4 class="plans__card__price">
+                        <span>$150</span>
+                        /Per Project
+                    </h4>
+                    <div class="plans__card__divider"></div>
+                    <h4 class="description plans__card__features">Features</h4>
+                    <ul class="plans__list">
+                        <li class="description">150 Lorem, Ipsum Dolor.</li>
+                        <li class="description">20 Lorem Ipsum Dolor Sit.</li>
+                        <li class="description">Lorem Ipsum Dolor Sit.</li>
+                        <li class="description">Free Lorem Ipsum Dolor.</li>
+                        <li class="description">Added Lorem Ipsum Dolor.</li>
+                    </ul>
+                    <button class="button plans__card__button">Select plan</button>
+                </div>
+                <div class="plans__card">
+                    <div class="plans__card_top">
+                        <h3 class="subtitle plans__card__subtitle">ULTIMATE</h3>
+                    </div>
+                    <h4 class="plans__card__price">
+                        <span>$210</span>
+                        /Per Project
+                    </h4>
+                    <div class="plans__card__divider"></div>
+                    <h4 class="description plans__card__features">Features</h4>
+                    <ul class="plans__list">
+                        <li class="description">150 Lorem, Ipsum Dolor.</li>
+                        <li class="description">20 Lorem Ipsum Dolor Sit.</li>
+                        <li class="description">Lorem Ipsum Dolor Sit.</li>
+                        <li class="description">Free Lorem Ipsum Dolor.</li>
+                        <li class="description">Added Lorem Ipsum Dolor.</li>
+                    </ul>
+                    <button class="button plans__card__button">Select plan</button>
+                </div>
+            </div>
+        </div>
+        <button class="next plans__next">
             <img src="./assets/png/Button with icon-4.png" alt="down arrow">
         </button>
     </section>

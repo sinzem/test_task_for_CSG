@@ -1,3 +1,123 @@
 .portfolio {
     position: relative;
+    background-color: var(--background-gray);
+    border-radius: 72px;
+    &__container {
+        max-width: 1332px;
+        margin: 0 auto;
+        padding: 38px 0 64px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    &__title {
+        line-height: 1;
+    }
+    &__filters {
+        margin-top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    &__button {
+        border: 2px solid black;
+        padding: 8px 22px;
+        font-family: jost-med;
+        &:not(.active) {
+            background-color: inherit;
+            color: black;
+        }
+    }
+    &__cases {
+        margin-top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    &__case {
+        display: none;
+        position: relative;
+        width: 318px;
+        height: 318px;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid black;
+        border-radius: 32px;
+        & a {
+            display: block;
+            width: 318px;
+            height: 318px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        &_mobile {
+            background-color: rgb(253, 195, 255);
+        }
+        &_cloud {
+            background-color: rgb(163, 228, 255);
+        }
+        &_analysis {
+            background-color: rgb(185, 255, 230);
+        }
+        &_hosting {
+            background-color: rgb(255, 235, 242);
+        }
+        &.active {
+            display: flex;
+        }
+    }
+}
+
+
+@media (max-width: 1449px) {
+    .portfolio__container {
+        max-width: 994px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .portfolio__container {
+        max-width: 656px;
+    }
+}
+
+@media (max-width: 991px) {
+    .portfolio {
+        border-radius: 32px;
+    }
+}
+
+@media (max-width: 767px) {
+    .portfolio {
+        &__container {
+            max-width: 420px;
+        }
+        &__cases {
+            justify-content: center;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .portfolio {
+        &__container {
+            max-width: 300px;
+            padding: 28px 0 56px;
+        }
+        &__case {
+            width: 300px;
+            height: 300px;
+            & a {
+                width: 300px;
+                height: 300px;
+            }
+        }
+        &__button {
+            font-size: 14px;
+            height: 36px;
+            border-radius: 18px;
+            line-height: 1;
+        }
+    }
 }

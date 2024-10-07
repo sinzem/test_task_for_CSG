@@ -94,6 +94,16 @@
     &__item__title {
         line-height: 1;
     }
+    &__button {
+        position: relative;
+        & a {
+            position: absolute;
+            width: 180px;
+            height: inherit;
+            top: 0;
+            left: 0;
+        }
+    }
 }
 
 @media (max-width: 1601px) {
