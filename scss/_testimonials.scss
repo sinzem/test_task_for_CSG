@@ -1,0 +1,122 @@
+.testimonials {
+    position: relative;
+    &__container {
+        width: 1320px;
+    }
+    &__title {
+        margin-top: 24px;
+        line-height: 1;
+    }
+    &__cards {
+        width: fit-content;
+        margin: 38px auto 0;
+        padding: 50px;
+        display: grid;
+        grid-template: auto / 1fr 1fr 1fr;
+        gap: 13px;
+        border: 2px solid black;
+        border-radius: 72px;
+    }
+    &__card {
+        height: 100%;
+        display: grid;
+        grid-template: minmax(auto, 196px) 1fr / 61px 1fr;
+        row-gap: 24px;
+        column-gap: 10px;
+        &:not(:last-child) {
+            border-right: 2px solid black;
+        }
+    }
+    &__braces{
+        display: block;
+        width: fit-content;
+        font-size: 128px;
+    }
+    &__description {
+        padding: 58px 16px 0px 0px;
+        max-height: 310px;
+        line-height: 1;
+        overflow: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+    }
+    &__ava {
+        align-self: center;
+        justify-self: center;
+    }
+    &__name {
+        line-height: 1;
+        & span {
+            text-decoration: none;
+        }
+    }
+}
+
+@media (max-width: 1449px) {
+    .testimonials {
+        &__container {
+            width: 70vw;
+        }
+        &__cards {
+            grid-template: 1fr 1fr 1fr / auto;
+        }
+        &__card {
+            height: fit-content;
+            padding-bottom: 24px;
+            grid-template: minmax(auto, 120px) 1fr / 61px 1fr;
+            row-gap: 10px;
+            &:not(:last-child) {
+                border-right: none;
+                border-bottom: 2px solid black;
+            }
+        }
+    }
+}
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 991px) {
+    .testimonials {
+        &__card {
+            grid-template: minmax(auto, 142px) 1fr / 61px 1fr;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .testimonials {
+        &__card {
+            grid-template: minmax(auto, 180px) 1fr / 61px 1fr;
+        }
+        &__cards {
+            padding: 24px 20px;
+            border-radius: 22px;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .testimonials {
+        &__container {
+            width: 94vw;
+            margin: 57px auto;
+        }
+        &__cards {
+            padding: 10px 10px 30px;
+        }
+        &__card {
+            padding: 5px 0px 24px 0px;
+            grid-template: minmax(auto, 216px) 1fr / 61px 1fr;
+        }
+        &__description {
+            padding-right: 0px;
+        }
+    }
+}

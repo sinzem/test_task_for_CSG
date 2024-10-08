@@ -1,0 +1,215 @@
+.footer {
+    margin-top: 68px;
+    width: 100%;
+    background-color: black;
+    border-radius: 72px 72px 0 0;
+    color: white;
+    &__container {
+        width: 1332px;
+        margin: 0 auto;
+        padding: 48px 0;
+    }
+    &_top__wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__top {
+        max-width: 510px;
+    }
+    &__logo {
+        margin-bottom: 25px;
+    }
+    &__description {
+        max-width: 428px;
+    }
+    &__subscribe {
+        margin-top: 48px;
+    }
+    &__form {
+        margin-top: 12px;
+        padding: 0 16px;
+        height: 69px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        border: 2px solid white;
+        border-radius: 34px; 
+        & input {
+            background-color: black;
+            color: white;
+            font-size: 20px;
+            line-height: 29px;
+            &::placeholder {
+                color: white;
+                background-color: black;
+            }
+        }
+        & button {
+            background-color: var(--background-color);
+            color: black;
+        }
+    }
+    &__clarification {
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+    &_before {
+        & a {
+            margin-top: 24px;
+            padding-left: 30px;
+            display: block;
+            position: relative;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            &::before {
+                content: "";
+                background: url("../assets/png/Arrow\ side\ up-1.png") center center;
+                background-size: 90%;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                border: 2px solid white;
+                border-radius: 12px;
+            }
+        }
+    }
+    &__contacts {
+        & > a {
+            margin-top: 24px;
+            padding-left: 30px;
+            display: block;
+            position: relative;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+        
+        }
+    }
+    &_mail::before {
+        content: "";
+        background: url("../assets/png/Email.png") center center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+    }
+    &_adr::before {
+        content: "";
+        background: url("../assets/png/Map-1.png") center center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+    }
+    &_tel::before {
+        content: "";
+        background: url("../assets/png/Call-footer.png") center center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+    }
+    &__social {
+        margin-top: 30px;
+        display: flex;
+        gap: 12px;
+        & > a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--background-color);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } 
+    }
+    &__bottom {
+        margin-top: 51px;
+        display: flex;
+        justify-content: space-between;
+        & a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+    &__privacy {
+        display: flex;
+        gap: 25px;
+    }
+}
+
+@media (max-width: 1449px) {
+    .footer {
+        &__container {
+            width: 100%;
+            padding: 48px 10vw;
+        }
+        &_top__wrapper {
+            flex-wrap: wrap;
+            row-gap: 28px;
+        }
+    }
+}
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 991px) {
+    .footer {
+        border-radius: 36px;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer {
+        &__bottom {
+            flex-direction: column;
+        }
+        &__privacy {
+            margin-top: 10px;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .footer {
+        margin-top: 52px;
+        &__container {
+            padding: 48px 12px;
+        }
+        &__description {
+            max-width: 300px;
+        }
+        &__subscribe {
+            max-width: 300px;
+        }
+        &__form {
+            padding: 0 8px;
+            height: 50px;
+            gap: 8px;
+            border-radius: 25px;
+            & input {
+                max-width: 180px;
+            }
+            & button {
+                border-radius: 14px;
+                height: 29px;
+                padding: 5px 10px;
+                font-size: 16px;
+                line-height: 20px;
+                & img {
+                    display: none;
+                }
+            }
+        }
+    }
+}

@@ -6,13 +6,25 @@ window.addEventListener("DOMContentLoaded", () => {
     const headerMenuDropDown = document.querySelector(".header__menu_drop_down");
     const menuItems = document.querySelectorAll(".header__menu__item");
     const headerMenuButton = document.querySelector(".header__menu__button");
+    const menuDataItems = document.querySelectorAll("[data-to]");
+    const offset = document.querySelector(".offset").offsetTop;
     const windowWidth = window.innerWidth;
 
-    if (windowWidth > 1199) {
-        window.addEventListener("scroll", () => {
+   
+    window.addEventListener("scroll", () => {
+        if (windowWidth > 1199) {
             window.scrollY > 200 ? headerMenu.classList.add("active") : headerMenu.classList.remove("active");
+        };
+        menuDataItems.forEach((item) => {
+            if (item.getBoundingClientRect().top <= offset &&
+             item.getBoundingClientRect().bottom >= offset) {
+                menuItems.forEach(btn => {
+                    btn.classList.contains(`to_${item.dataset.to}`) ? btn.classList.add("active") : btn.classList.remove("active");
+                })
+            } 
         })
-    }
+    })
+    
 
     headerMenuDropDown.addEventListener("click", () => {
         if(headerMenuDropDown.classList.contains("active")) {
@@ -48,9 +60,12 @@ window.addEventListener("DOMContentLoaded", () => {
     menuItems.forEach(item => {
         item.addEventListener("click", () => {
             menuItems.forEach(item => {
-                item.classList.contains("active") ? item.classList.remove("active") : null;
+                // item.classList.contains("active") ? item.classList.remove("active") : null;
             })
-            item.classList.add("active");
+            // item.classList.add("active");
+            if (headerMenuDrop.classList.contains("active")) {
+                dropMenuClose();
+            }
         })
     })
 
@@ -77,6 +92,20 @@ window.addEventListener("DOMContentLoaded", () => {
             })
         })
     }
+
+    // next-button scrolling
+    const nextButtons = document.querySelectorAll(".next");
+
+    nextButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            let bottomLine = btn.parentElement.getBoundingClientRect().bottom +  window.scrollY;
+            window.scrollTo({
+                top: bottomLine,
+                left: 0,
+                behavior: "smooth"
+              });
+        })
+    })
 
     // services cards
     const servicesButtons = document.querySelectorAll(".services__item__button")
@@ -131,6 +160,46 @@ window.addEventListener("DOMContentLoaded", () => {
             })
         }
     })
+
+    // modals and form + validation
+    const callButtons = document.querySelectorAll(".button__call");
+    const callModal = document.querySelector(".to-call");
+    const callForm = document.querySelector(".to-call__form");
+    const userName = callForm.querySelector("#user-name");
+    const userPhone = callForm.querySelector(".user-phone");
+    const userEmail = callForm.querySelector("#user-email");
+    const userArea = callForm.querySelector("#call-area");
+    const callClose = document.querySelector(".to-call__close");
+
+    userName.addEventListener("input", () => {
+        userName.value = userName.value.replace(/^[^а-яёa-z0-9]/i, "");
+    })
+
+    mask(".user-phone");
+
+    userArea.addEventListener("input", () => {
+        userArea.value = userArea.value.replace(/[<>]/g, "");
+    })
+
+    // /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    callButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            callModal.classList.add("active");
+            document.body.style.overflow = "hidden";
+            document.body.style.paddingRight = `${scroll}px`;
+        })
+    })
+
+    callModal.addEventListener("click", (e) => {
+        if (e.target === callModal || e.target === callClose) {
+            callModal.classList.remove("active");
+            document.body.style.overflow = "";
+            document.body.style.paddingRight = ``;
+            callForm.reset();
+        }
+    })
+
 })
 
 
@@ -150,3 +219,45 @@ function calcScroll() {
 
     return scrollWidth; 
 }
+
+// phone mask
+const mask = (selector) => { 
+
+    let setCursorPosition = (pos, elem) => { 
+        elem.focus(); 
+
+        if (elem.setSelectionRange) { 
+            elem.setSelectionRange(pos, pos); 
+        } 
+    };
+
+    function createMask(event) { 
+        let matrix = '+38 (0__) ___ __ __';
+        let i = 0;  
+        let def = matrix.replace(/\D/g, ''); 
+        let val = this.value.replace(/\D/g, ''); 
+
+        if (def.length >= val.length) {
+            val = def;
+        } 
+        this.value = matrix.replace(/./g, function(a) { 
+            return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? '' : a; 
+        })
+
+        if (event.type === 'blur') {
+            if (this.value.length == 3) { 
+                this.value = '';
+            } 
+        } else { 
+            setCursorPosition(this.value.length, this);
+        }
+    }
+
+    let inputs = document.querySelectorAll(selector); 
+
+    inputs.forEach(input => {
+        input.addEventListener('input', createMask);
+        input.addEventListener('focus', createMask);
+        input.addEventListener('blur', createMask);
+    });
+};

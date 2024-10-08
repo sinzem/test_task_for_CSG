@@ -1,0 +1,48 @@
+.thanks-modal {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .6);
+    transition: opacity .5s ease;
+    opacity: 0;
+    z-index: 30;
+    &.active {
+        display: flex;
+        opacity: 1;
+    }
+    &__message {
+        height: 20vh;
+        width: 50vw;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--background-color);
+        border: 2px solid black;
+        border-radius: 36px;
+        font-family: jost-med;
+    }
+    &__close {
+        position: absolute;
+        top: var(--index);
+        right: var(--index);
+        width: 40px;
+        height: 40px;
+        font-size: 40px;
+        text-align: center;
+        line-height: 1;
+        color: var(--background-color);
+        cursor: pointer;
+    }
+}
+.thanks-modal__failure, .thanks-modal__success, .thanks-modal__loading {
+    display: none;
+    &.active {
+        display: block;
+    }
+}

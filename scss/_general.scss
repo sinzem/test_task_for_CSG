@@ -2,7 +2,12 @@
 body {
     font-family: jost-reg;
     background-color: var(--background-color);
+    position: relative;
 }
+
+html, body {
+    scroll-behavior: smooth;
+} 
 
 .container {
     width: 1452px;
@@ -63,6 +68,13 @@ body {
     width: 78px;
     background-color: inherit;
 }
+
+.offset {
+    position: fixed;
+    left: 50%;
+    top: 60vh;
+}
+
 
 @media (max-width: 1449px) {
  
