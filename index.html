@@ -862,7 +862,9 @@
                     <div class="footer__subscribe">
                         <h3 class="description footer__subscribe__label">Subscribe To Our News Letter</h3>
                         <form class="footer__form fetch-form">
-                            <input name="email" type="email" required placeholder="Email address">
+                            <div class="input__wrap">
+                                <input id="footer-input" name="email" type="email" required placeholder="Email address">
+                            </div>
                             <button class="button footer__subscribe__button">
                                 Subscribe
                                 <img src="./assets/png/Arrow_side_up-1.png" alt="up arrow">
@@ -946,10 +948,18 @@
             <button class="to-call__close">&times;</button>
             <form action="#" id="to-call__form" class="to-call__form fetch-form">
                 <h4 class="subtitle to-call__subtitle">FILL OUT AND WE WILL CONTACT YOU IN A FEW MINUTES</h4>
-                <input id="user-name" type="text" name="name" placeholder="Your name" required>
-                <input id="user-phone" class="user-phone" type="text" name="phone" placeholder="Your phone" required>
-                <input id="user-email" type="email" name="email" placeholder="Your e-mail" required>
-                <textarea id="call-area" name="message" placeholder="Your comment"></textarea>
+                <div class="input__wrap">
+                    <input id="user-name" type="text" name="name" placeholder="Your name" required>
+                </div>
+                <div class="input__wrap">
+                    <input id="user-phone" class="user-phone" type="text" name="phone" placeholder="Your phone" required>
+                </div>
+                <div class="input__wrap">
+                    <input id="user-email" type="email" name="email" placeholder="Your e-mail" required>
+                </div>
+                <div class="input__wrap">
+                    <textarea id="call-area" name="message" placeholder="Your comment"></textarea>
+                </div>
                 <button class="button to-call__button">
                     Send message
                     <img src="./assets/png/Arrow_side_up.png" alt="up arrow">
