@@ -39,7 +39,7 @@ window.addEventListener("DOMContentLoaded", () => {
         headerMenuDrop.classList.add("active");
         headerMenuDropDown.classList.add("active");
         document.body.style.overflow = "hidden";
-        document.body.style.marginRight = `${scroll}px`;
+        document.body.style.paddingRight = `${scroll}px`;
     }
 
     headerMenuButton.addEventListener("click", () => {
@@ -54,14 +54,14 @@ window.addEventListener("DOMContentLoaded", () => {
         headerMenuDrop.classList.remove("active");
         headerMenuDropDown.classList.remove("active");
         document.body.style.overflow = "";
-        document.body.style.marginRight = `0px`;
+        document.body.style.paddingRight = `0px`;
     }
     
     menuItems.forEach(item => {
         item.addEventListener("click", () => {
-            menuItems.forEach(item => {
+            // menuItems.forEach(item => {
                 // item.classList.contains("active") ? item.classList.remove("active") : null;
-            })
+            // })
             // item.classList.add("active");
             if (headerMenuDrop.classList.contains("active")) {
                 dropMenuClose();
@@ -162,13 +162,23 @@ window.addEventListener("DOMContentLoaded", () => {
     })
 
     // modals and form + validation
+    const footerForm = document.querySelector(".footer__form");
+    const footerButton = document.querySelector(".footer__subscribe__button");
+
+    const thanksModal = document.querySelector(".thanks-modal");
+    const thanksClose = document.querySelector(".thanks-modal__close");
+    const thanksLoading = document.querySelector(".thanks-modal__loading");
+    const thanksSuccess = document.querySelector(".thanks-modal__success");
+    const thanksFailure = document.querySelector(".thanks-modal__failure");
+
+    const forms = document.querySelectorAll(".fetch-form");
+
     const callButtons = document.querySelectorAll(".button__call");
     const callModal = document.querySelector(".to-call");
-    const callForm = document.querySelector(".to-call__form");
-    const userName = callForm.querySelector("#user-name");
-    const userPhone = callForm.querySelector(".user-phone");
-    const userEmail = callForm.querySelector("#user-email");
-    const userArea = callForm.querySelector("#call-area");
+    const userName = document.querySelector("#user-name");
+    // const userPhone = callForm.querySelector(".user-phone");
+    // const userEmail = callForm.querySelector("#user-email");
+    const userArea = document.querySelector("#call-area");
     const callClose = document.querySelector(".to-call__close");
 
     userName.addEventListener("input", () => {
@@ -181,10 +191,61 @@ window.addEventListener("DOMContentLoaded", () => {
         userArea.value = userArea.value.replace(/[<>]/g, "");
     })
 
-    // /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    forms.forEach(form => {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            calcScroll();
+            thanksModal.classList.add("active");
+            thanksLoading.classList.add("active");
+            document.body.style.overflow = "hidden";
+            document.body.style.paddingRight = `${scroll}px`;
+
+            const formData = new FormData(form);
+            const objData = {};
+            formData.forEach(function(value, key) {
+                objData[key] = value;
+            });
+            fetch("request.php", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(objData)
+            })
+            .then((e) => { 
+                if (e.status === 200) {
+                    thanksLoading.classList.remove("active");
+                    thanksFailure.classList.remove("active");
+                    thanksSuccess.classList.add("active");
+                } else {
+                    console.log(e);
+                    thanksLoading.classList.remove("active");
+                    thanksSuccess.classList.remove("active");
+                    thanksFailure.classList.add("active");
+                }
+            })
+            .catch((e) => {
+                console.log(e);
+                thanksLoading.classList.remove("active");
+                thanksSuccess.classList.remove("active");
+                thanksFailure.classList.add("active");
+            }).finally(() => { 
+                    setTimeout(() => {
+                        thanksLoading.classList.contains("active") ?  thanksLoading.classList.remove("active") : null;
+                        thanksSuccess.classList.contains("active") ?  thanksSuccess.classList.remove("active") : null;
+                        thanksFailure.classList.contains("active") ?  thanksFailure.classList.remove("active") : null;
+                        thanksModal.classList.remove("active");
+                        document.body.style.overflow = "";
+                        document.body.style.paddingRight = `0px`;
+                    }, 5000)
+                    form.reset();
+                });
+        })
+    })
 
     callButtons.forEach(button => {
         button.addEventListener("click", () => {
+            calcScroll();
             callModal.classList.add("active");
             document.body.style.overflow = "hidden";
             document.body.style.paddingRight = `${scroll}px`;
@@ -197,6 +258,14 @@ window.addEventListener("DOMContentLoaded", () => {
             document.body.style.overflow = "";
             document.body.style.paddingRight = ``;
             callForm.reset();
+        }
+    })
+
+    thanksModal.addEventListener("click", (e) => {
+        if (e.target === thanksModal || e.target === thanksClose) {
+            thanksModal.classList.remove("active");
+            document.body.style.overflow = "";
+            document.body.style.paddingRight = ``;
         }
     })
 
@@ -219,6 +288,9 @@ function calcScroll() {
 
     return scrollWidth; 
 }
+
+// for e-mail
+// /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 // phone mask
 const mask = (selector) => { 

@@ -13,7 +13,7 @@
     z-index: 30;
     &.active {
         display: flex;
-        opacity: 1;
+        animation: is-visible .6s ease forwards;
     }
     &__message {
         height: 20vh;
@@ -44,5 +44,24 @@
     display: none;
     &.active {
         display: block;
+    }
+}
+
+@keyframes is-visible {0% {opacity: 0;}100% {opacity: 1;}}
+
+@media (max-width: 767px) {
+    .thanks-modal {
+        &__message {
+            width: 75vw;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .thanks-modal {
+        &__message {
+            width: 95vw;
+            padding: 40px 12px;
+        }
     }
 }

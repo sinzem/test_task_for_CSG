@@ -8,7 +8,6 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, .6);
-    // transition: opacity .3s ease;
     opacity: 0;
     z-index: 30;
     &.active {
@@ -65,11 +64,27 @@
     }
 }
 
-@keyframes is-visible {
-    0% {
-        opacity: 0;
+@keyframes is-visible {0% {opacity: 0;}100% {opacity: 1;}}
+
+@media (max-width: 767px) {
+    .to-call {
+        &__wrapper {
+            width: 75vw;
+        }
+        &__close {
+            top: calc(var(--index) * -3);
+        }
     }
-    100% {
-        opacity: 1;
+}
+
+@media (max-width: 575px) {
+    .to-call {
+        &__wrapper {
+            width: 95vw;
+            padding: 40px 12px;
+        }
+        &__close {
+            top: calc(var(--index) * -4);
+        }
     }
 }
