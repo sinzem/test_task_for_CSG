@@ -162,8 +162,7 @@ window.addEventListener("DOMContentLoaded", () => {
     })
 
     // modals and form + validation
-    const footerForm = document.querySelector(".footer__form");
-    const footerButton = document.querySelector(".footer__subscribe__button");
+    const footerInput= document.querySelector("#footer-input");
 
     const thanksModal = document.querySelector(".thanks-modal");
     const thanksClose = document.querySelector(".thanks-modal__close");
@@ -176,8 +175,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const callButtons = document.querySelectorAll(".button__call");
     const callModal = document.querySelector(".to-call");
     const userName = document.querySelector("#user-name");
-    // const userPhone = callForm.querySelector(".user-phone");
-    // const userEmail = callForm.querySelector("#user-email");
+    const userPhone = document.querySelector(".user-phone");
+    const userEmail = document.querySelector("#user-email");
     const userArea = document.querySelector("#call-area");
     const callClose = document.querySelector(".to-call__close");
 
@@ -191,9 +190,30 @@ window.addEventListener("DOMContentLoaded", () => {
         userArea.value = userArea.value.replace(/[<>]/g, "");
     })
 
+    userEmail.addEventListener("input", () => {
+        userEmail.value = userEmail.value.replace(/[^\.\-@а-яёa-z0-9]/ig, "");
+    })
+
+    footerInput.addEventListener("input", () => {
+        footerInput.value = footerInput.value.replace(/[^\.\-@а-яёa-z0-9]/ig, "");
+    })
+
     forms.forEach(form => {
         form.addEventListener("submit", (e) => {
             e.preventDefault();
+
+            if (e.target.classList.contains("to-call__form")) {
+                if (userName && userName.value.length < 2) {
+                    showWarningMessage(userName, "The name can't be that short!");
+                    return;
+                }
+    
+                if (userPhone && userPhone.value.length != 19) {
+                    showWarningMessage(userPhone, "The number can't be that short!");
+                    return;
+                }
+            }
+
             calcScroll();
             thanksModal.classList.add("active");
             thanksLoading.classList.add("active");
@@ -288,6 +308,30 @@ function calcScroll() {
 
     return scrollWidth; 
 }
+
+function showWarningMessage(inpField, message) {
+    inpField.parentElement.style.position = "relative";
+
+    let statusMessage = document.createElement('div');
+    statusMessage.style.cssText = `
+        position: absolute;
+        bottom: -22px;
+        left: 40px;
+        padding: 4px 16px;
+        width: fit-content;
+        height: fit-content;
+        border: 2px solid #c4433a;
+        border-radius: 13px;
+        font-size: 16px;
+        background-color: white;
+    ` ;
+    statusMessage.textContent = message;
+    inpField.parentElement.appendChild(statusMessage);
+
+    setTimeout(() => {
+        statusMessage.remove();
+    }, 3000);
+}   
 
 // for e-mail
 // /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
