@@ -1594,7 +1594,7 @@ html, body {
 }
 .footer_before a::before {
   content: "";
-  background: url("../assets/png/Arrow side up-1.png") center center;
+  background: url("../assets/png/Arrow_side_up-1.png") center center;
   background-size: 90%;
   width: 20px;
   height: 20px;
